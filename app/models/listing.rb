@@ -1,4 +1,7 @@
 class Listing < ApplicationRecord
+  validates :country, presence: {
+    meesage: -> (listing, data) { "No country code for #{listing.country_code} "}
+  }
   geocoded_by :full_address
   after_validation :geocode
 
