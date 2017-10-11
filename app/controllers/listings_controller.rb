@@ -10,6 +10,9 @@ class ListingsController < ApplicationController
   # GET /listings/1
   # GET /listings/1.json
   def show
+    @listing = Listing.find(params[:id])
+    @night_fee_cents = @listing.night_fee_cents
+    @cleaning_fee_cents = @listing.cleaning_fee_cents
   end
 
   # GET /listings/new

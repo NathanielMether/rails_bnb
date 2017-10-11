@@ -9,4 +9,8 @@ class Listing < ApplicationRecord
   def full_address
     "#{street_address}, #{city}, #{country}"
   end
+
+  def cents_to_dollars(cents)
+    Money.new(cents, "AUD").format
+  end
 end
