@@ -13,6 +13,7 @@ class ListingsController < ApplicationController
     @listing = Listing.find(params[:id])
     @night_fee_cents = @listing.night_fee_cents
     @cleaning_fee_cents = @listing.cleaning_fee_cents
+    @new_booking = Booking.new(check_in_date: Date.today)
   end
 
   # GET /listings/new

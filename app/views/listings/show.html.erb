@@ -1,9 +1,33 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
+<h1>
   <%= @listing.title %>
+</h1>
+
+<h2>Book</h2>
+<p>
+  <%= @listing.cents_to_dollars(@night_fee_cents) %> per night
 </p>
+<%= form_with(model: @new_booking, local: true) do |f| %>
+  <div>
+    <%= f.label :check_in_date, 'Check in:' %>
+    <%= f.date_field :check_in_date %>
+  </div>
+
+  <div>
+    <%= f.label :check_out_date, 'Check out:' %>
+    <%= f.date_field :check_out_date %>
+  </div>
+
+  <div>
+    <%= f.label :guest_count %>
+    <%= f.number_field :guest_count %>
+  </div>
+
+  <%= f.button 'Book' %>
+
+<% end %>
+
 
 <p>
   <strong>Street address:</strong>
@@ -43,11 +67,6 @@
 <p>
   <strong>Description:</strong>
   <%= @listing.description %>
-</p>
-
-<p>
-  <strong>Night fee cents:</strong>
-  <%= @listing.cents_to_dollars(@night_fee_cents) %>
 </p>
 
 <p>
